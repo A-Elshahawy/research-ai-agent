@@ -1,0 +1,33 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        types: [python]
+      - id: end-of-file-fixer
+        types: [python]
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ["--maxkb", "1024"]
+
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        types: [python]
+        args: ["--profile", "black"]
+
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.2
+    hooks:
+      - id: ruff
+        types: [python]
+        args: 
+          - --fix
+          - --exit-non-zero-on-fix
+      - id: ruff-format
+        types: [python]
+
+  
