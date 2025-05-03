@@ -39,7 +39,7 @@ This approach allows the agent to break down complex research tasks, use appropr
 
 ## Requirements
 
-* Python 3.9+
+* Python 3.11+
 * langchain
 * openai
 * beautifulsoup4
@@ -192,12 +192,12 @@ class RealWebSearchTool(ResearchTool):
         }
         response = requests.get(url, params=params)
         results = response.json()
-      
+    
         # Format results
         results_text = "Search results:\n"
         for i, item in enumerate(results.get("items", [])[:5]):
             results_text += f"{i+1}. {item.get('title')}\n   {item.get('snippet')}\n   URL: {item.get('link')}\n\n"
-      
+    
         return results_text
 ```
 
@@ -247,7 +247,7 @@ class PDFExtractorTool(ResearchTool):
   
     def run(self, file_path: str) -> str:
         import PyPDF2
-      
+    
         try:
             with open(file_path, "rb") as file:
                 reader = PyPDF2.PdfReader(file)
